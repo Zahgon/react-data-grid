@@ -34,8 +34,7 @@ const textEditorInternalClassname = css`
 export const textEditorClassname = `rdg-text-editor ${textEditorInternalClassname}`;
 
 function autoFocusAndSelect(input: HTMLInputElement | null) {
-  input?.focus();
-  input?.select();
+    throw new Error("STUB");
 }
 
 export function renderTextEditor<TRow, TSummaryRow>({
@@ -44,13 +43,5 @@ export function renderTextEditor<TRow, TSummaryRow>({
   onRowChange,
   onClose
 }: RenderEditCellProps<TRow, TSummaryRow>) {
-  return (
-    <input
-      className={textEditorClassname}
-      ref={autoFocusAndSelect}
-      value={row[column.key as keyof TRow] as unknown as string}
-      onChange={(event) => onRowChange({ ...row, [column.key]: event.target.value })}
-      onBlur={() => onClose(true, false)}
-    />
-  );
+    throw new Error("STUB");
 }

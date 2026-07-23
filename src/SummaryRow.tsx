@@ -51,43 +51,7 @@ function SummaryRow<R, SR>({
   isTreeGrid,
   'aria-rowindex': ariaRowIndex
 }: SummaryRowProps<R, SR>) {
-  const isPositionOnRow = activeCellIdx === -1;
-
-  const cells = iterateOverViewportColumnsForRow(activeCellIdx, { type: 'SUMMARY', row })
-    .map(([column, isCellActive, colSpan]) => (
-      <SummaryCell<R, SR>
-        key={column.key}
-        column={column}
-        colSpan={colSpan}
-        row={row}
-        rowIdx={rowIdx}
-        isCellActive={isCellActive}
-        setActivePosition={setActivePosition}
-      />
-    ))
-    .toArray();
-
-  return (
-    <div
-      role="row"
-      aria-rowindex={ariaRowIndex}
-      tabIndex={isTreeGrid ? (isPositionOnRow ? 0 : -1) : undefined}
-      className={classnames(
-        rowClassname,
-        `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
-        summaryRowClassname,
-        isTop ? topSummaryRowClassname : bottomSummaryRowClassname,
-        isPositionOnRow && rowActiveClassname
-      )}
-      style={{
-        gridRowStart,
-        top,
-        bottom
-      }}
-    >
-      {cells}
-    </div>
-  );
+    throw new Error("STUB");
 }
 
 export default memo(SummaryRow) as <R, SR>(props: SummaryRowProps<R, SR>) => React.JSX.Element;

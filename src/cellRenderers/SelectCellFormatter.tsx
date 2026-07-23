@@ -19,15 +19,5 @@ export function SelectCellFormatter({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy
 }: SelectCellFormatterProps) {
-  const renderCheckbox = useDefaultRenderers()!.renderCheckbox!;
-
-  return renderCheckbox({
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledBy,
-    tabIndex,
-    indeterminate,
-    disabled,
-    checked: value,
-    onChange
-  });
+    throw new Error("STUB");
 }

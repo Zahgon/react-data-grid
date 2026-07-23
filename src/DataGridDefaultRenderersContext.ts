@@ -7,5 +7,5 @@ export const DataGridDefaultRenderersContext = createContext<Maybe<Renderers<any
 DataGridDefaultRenderersContext.displayName = 'DataGridDefaultRenderersContext';
 
 export function useDefaultRenderers<R, SR>(): Maybe<Renderers<R, SR>> {
-  return use(DataGridDefaultRenderersContext);
+    throw new Error("STUB");
 }

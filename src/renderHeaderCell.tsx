@@ -24,13 +24,7 @@ export default function renderHeaderCell<R, SR>({
   sortDirection,
   priority
 }: RenderHeaderCellProps<R, SR>) {
-  if (!column.sortable) return column.name;
-
-  return (
-    <SortableHeaderCell sortDirection={sortDirection} priority={priority}>
-      {column.name}
-    </SortableHeaderCell>
-  );
+    throw new Error("STUB");
 }
 
 type SharedHeaderCellProps<R, SR> = Pick<
@@ -47,12 +41,5 @@ function SortableHeaderCell<R, SR>({
   priority,
   children
 }: SortableHeaderCellProps<R, SR>) {
-  const renderSortStatus = useDefaultRenderers<R, SR>()!.renderSortStatus!;
-
-  return (
-    <span className={headerSortCellClassname}>
-      <span className={headerSortNameClassname}>{children}</span>
-      <span>{renderSortStatus({ sortDirection, priority })}</span>
-    </span>
-  );
+    throw new Error("STUB");
 }

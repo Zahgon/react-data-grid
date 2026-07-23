@@ -34,94 +34,7 @@ function Cell<R, SR>({
   style,
   ...props
 }: CellRendererProps<R, SR>) {
-  const { tabIndex, childTabIndex, onFocus } = useRovingTabIndex(isCellActive);
-
-  const { cellClass } = column;
-  className = getCellClassname(
-    column,
-    isDraggedOver && cellDraggedOverClassname,
-    typeof cellClass === 'function' ? cellClass(row) : cellClass,
-    className
-  );
-  const isEditable = isCellEditableUtil(column, row);
-
-  function setActivePositionWrapper(enableEditor = false) {
-    setActivePosition({ rowIdx, idx: column.idx }, { enableEditor });
-  }
-
-  function handleMouseEvent(
-    event: React.MouseEvent<HTMLDivElement>,
-    eventHandler?: CellMouseEventHandler<R, SR>
-  ) {
-    let eventHandled = false;
-    if (eventHandler) {
-      const cellEvent = createCellEvent(event);
-      eventHandler({ rowIdx, row, column, setActivePosition: setActivePositionWrapper }, cellEvent);
-      eventHandled = cellEvent.isGridDefaultPrevented();
-    }
-    return eventHandled;
-  }
-
-  function handleMouseDown(event: MouseEvent<HTMLDivElement>) {
-    onMouseDown?.(event);
-    if (!handleMouseEvent(event, onCellMouseDown)) {
-      // select cell if the event is not prevented
-      setActivePositionWrapper();
-    }
-  }
-
-  function handleClick(event: MouseEvent<HTMLDivElement>) {
-    onClick?.(event);
-    handleMouseEvent(event, onCellClick);
-  }
-
-  function handleDoubleClick(event: MouseEvent<HTMLDivElement>) {
-    onDoubleClick?.(event);
-    if (!handleMouseEvent(event, onCellDoubleClick)) {
-      // go into edit mode if the event is not prevented
-      setActivePositionWrapper(true);
-    }
-  }
-
-  function handleContextMenu(event: MouseEvent<HTMLDivElement>) {
-    onContextMenu?.(event);
-    handleMouseEvent(event, onCellContextMenu);
-  }
-
-  function handleRowChange(newRow: R) {
-    onRowChange(column, rowIdx, newRow);
-  }
-
-  return (
-    <div
-      role="gridcell"
-      aria-colindex={column.idx + 1} // aria-colindex is 1-based
-      aria-colspan={colSpan}
-      aria-selected={isCellActive}
-      aria-readonly={!isEditable || undefined}
-      tabIndex={tabIndex}
-      className={className}
-      style={{
-        ...getCellStyle(column, colSpan),
-        ...style
-      }}
-      onClick={handleClick}
-      onMouseDown={handleMouseDown}
-      onDoubleClick={handleDoubleClick}
-      onContextMenu={handleContextMenu}
-      onFocus={onFocus}
-      {...props}
-    >
-      {column.renderCell({
-        column,
-        row,
-        rowIdx,
-        isCellEditable: isEditable,
-        tabIndex: childTabIndex,
-        onRowChange: handleRowChange
-      })}
-    </div>
-  );
+    throw new Error("STUB");
 }
 
 const CellComponent = memo(Cell) as <R, SR>(props: CellRendererProps<R, SR>) => React.JSX.Element;
@@ -129,5 +42,5 @@ const CellComponent = memo(Cell) as <R, SR>(props: CellRendererProps<R, SR>) => 
 export default CellComponent;
 
 export function defaultRenderCell<R, SR>(key: React.Key, props: CellRendererProps<R, SR>) {
-  return <CellComponent key={key} {...props} />;
+    throw new Error("STUB");
 }

@@ -21,32 +21,7 @@ function SummaryCell<R, SR>({
   isCellActive,
   setActivePosition
 }: SummaryCellProps<R, SR>) {
-  const { tabIndex, childTabIndex, onFocus } = useRovingTabIndex(isCellActive);
-  const { summaryCellClass } = column;
-  const className = getCellClassname(
-    column,
-    typeof summaryCellClass === 'function' ? summaryCellClass(row) : summaryCellClass
-  );
-
-  function onMouseDown() {
-    setActivePosition({ rowIdx, idx: column.idx });
-  }
-
-  return (
-    <div
-      role="gridcell"
-      aria-colindex={column.idx + 1}
-      aria-colspan={colSpan}
-      aria-selected={isCellActive}
-      tabIndex={tabIndex}
-      className={className}
-      style={getCellStyle(column, colSpan)}
-      onMouseDown={onMouseDown}
-      onFocus={onFocus}
-    >
-      {column.renderSummaryCell?.({ column, row, tabIndex: childTabIndex })}
-    </div>
-  );
+    throw new Error("STUB");
 }
 
 export default memo(SummaryCell) as <R, SR>(props: SummaryCellProps<R, SR>) => React.JSX.Element;

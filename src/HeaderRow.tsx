@@ -66,44 +66,7 @@ function HeaderRow<R, SR, K extends React.Key>({
   shouldFocusGrid,
   direction
 }: HeaderRowProps<R, SR, K>) {
-  const [draggedColumnKey, setDraggedColumnKey] = useState<string>();
-  const isPositionOnRow = activeCellIdx === -1;
-
-  const cells = iterateOverViewportColumnsForRow(activeCellIdx, { type: 'HEADER' })
-    .map(([column, isCellActive, colSpan], index) => (
-      <HeaderCell<R, SR>
-        key={column.key}
-        column={column}
-        colSpan={colSpan}
-        rowIdx={rowIdx}
-        isCellActive={isCellActive}
-        onColumnResize={onColumnResize}
-        onColumnResizeEnd={onColumnResizeEnd}
-        onColumnsReorder={onColumnsReorder}
-        onSortColumnsChange={onSortColumnsChange}
-        sortColumns={sortColumns}
-        setPosition={setPosition}
-        shouldFocusGrid={shouldFocusGrid && index === 0}
-        direction={direction}
-        draggedColumnKey={draggedColumnKey}
-        setDraggedColumnKey={setDraggedColumnKey}
-      />
-    ))
-    .toArray();
-
-  return (
-    <div
-      role="row"
-      aria-rowindex={rowIdx} // aria-rowindex is 1 based
-      className={classnames(
-        headerRowClassname,
-        isPositionOnRow && rowActiveClassname,
-        headerRowClass
-      )}
-    >
-      {cells}
-    </div>
-  );
+    throw new Error("STUB");
 }
 
 export default memo(HeaderRow) as <R, SR, K extends React.Key>(

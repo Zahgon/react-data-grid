@@ -20,33 +20,5 @@ export default function GroupedColumnHeaderCell<R, SR>({
   isCellActive,
   setPosition
 }: GroupedColumnHeaderCellProps<R, SR>) {
-  const { tabIndex, onFocus } = useRovingTabIndex(isCellActive);
-  const { colSpan } = column;
-  const rowSpan = getHeaderCellRowSpan(column, rowIdx);
-  const index = column.idx + 1;
-
-  function onMouseDown() {
-    setPosition({ idx: column.idx, rowIdx });
-  }
-
-  return (
-    <div
-      role="columnheader"
-      aria-colindex={index}
-      aria-colspan={colSpan}
-      aria-rowspan={rowSpan}
-      aria-selected={isCellActive}
-      tabIndex={tabIndex}
-      className={classnames(cellClassname, column.headerCellClass)}
-      style={{
-        ...getHeaderCellStyle(column, rowIdx, rowSpan),
-        gridColumnStart: index,
-        gridColumnEnd: index + colSpan
-      }}
-      onFocus={onFocus}
-      onMouseDown={onMouseDown}
-    >
-      {column.name}
-    </div>
-  );
+    throw new Error("STUB");
 }

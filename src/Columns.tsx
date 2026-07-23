@@ -5,50 +5,15 @@ import { SelectCellFormatter } from './cellRenderers';
 export const SELECT_COLUMN_KEY = 'rdg-select-column';
 
 function HeaderRenderer({ tabIndex }: RenderHeaderCellProps<unknown>) {
-  const { isIndeterminate, isRowSelected, onRowSelectionChange } = useHeaderRowSelection();
-
-  return (
-    <SelectCellFormatter
-      aria-label="Select All"
-      tabIndex={tabIndex}
-      indeterminate={isIndeterminate}
-      value={isRowSelected}
-      onChange={(checked) => {
-        onRowSelectionChange({ checked: isIndeterminate ? false : checked });
-      }}
-    />
-  );
+    throw new Error("STUB");
 }
 
 function SelectFormatter({ row, tabIndex }: RenderCellProps<unknown>) {
-  const { isRowSelectionDisabled, isRowSelected, onRowSelectionChange } = useRowSelection();
-
-  return (
-    <SelectCellFormatter
-      aria-label="Select"
-      tabIndex={tabIndex}
-      disabled={isRowSelectionDisabled}
-      value={isRowSelected}
-      onChange={(checked, isShiftClick) => {
-        onRowSelectionChange({ row, checked, isShiftClick });
-      }}
-    />
-  );
+    throw new Error("STUB");
 }
 
 function SelectGroupFormatter({ row, tabIndex }: RenderGroupCellProps<unknown>) {
-  const { isRowSelected, onRowSelectionChange } = useRowSelection();
-
-  return (
-    <SelectCellFormatter
-      aria-label="Select Group"
-      tabIndex={tabIndex}
-      value={isRowSelected}
-      onChange={(checked) => {
-        onRowSelectionChange({ row, checked, isShiftClick: false });
-      }}
-    />
-  );
+    throw new Error("STUB");
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -62,12 +27,12 @@ export const SelectColumn: Column<any, any> = {
   sortable: false,
   frozen: true,
   renderHeaderCell(props) {
-    return <HeaderRenderer {...props} />;
+      throw new Error("STUB");
   },
   renderCell(props) {
-    return <SelectFormatter {...props} />;
+      throw new Error("STUB");
   },
   renderGroupCell(props) {
-    return <SelectGroupFormatter {...props} />;
+      throw new Error("STUB");
   }
 };

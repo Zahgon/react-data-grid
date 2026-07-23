@@ -28,62 +28,7 @@ function Row<R, SR>({
   style,
   ...props
 }: RenderRowProps<R, SR>) {
-  const renderCell = useDefaultRenderers<R, SR>()!.renderCell!;
-
-  const isPositionOnRow = activeCellIdx === -1;
-
-  className = classnames(
-    rowClassname,
-    `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
-    isPositionOnRow && rowActiveClassname,
-    rowClass?.(row, rowIdx),
-    className
-  );
-
-  const cells = iterateOverViewportColumnsForRow(activeCellIdx, { type: 'ROW', row })
-    .map(([column, isCellActive, colSpan]) => {
-      if (isCellActive && activeCellEditor) {
-        return activeCellEditor;
-      }
-
-      return renderCell(column.key, {
-        column,
-        colSpan,
-        row,
-        rowIdx,
-        isDraggedOver: draggedOverCellIdx === column.idx,
-        isCellActive,
-        onCellMouseDown,
-        onCellClick,
-        onCellDoubleClick,
-        onCellContextMenu,
-        onRowChange,
-        setActivePosition
-      });
-    })
-    .toArray();
-
-  const selectionValue = useMemo(
-    (): RowSelectionContextValue => ({ isRowSelected, isRowSelectionDisabled }),
-    [isRowSelectionDisabled, isRowSelected]
-  );
-
-  return (
-    <RowSelectionContext value={selectionValue}>
-      <div
-        role="row"
-        tabIndex={isTreeGrid ? (isPositionOnRow ? 0 : -1) : undefined}
-        className={className}
-        style={{
-          gridRowStart,
-          ...style
-        }}
-        {...props}
-      >
-        {cells}
-      </div>
-    </RowSelectionContext>
-  );
+    throw new Error("STUB");
 }
 
 const RowComponent = memo(Row) as <R, SR>(props: RenderRowProps<R, SR>) => React.JSX.Element;
@@ -91,5 +36,5 @@ const RowComponent = memo(Row) as <R, SR>(props: RenderRowProps<R, SR>) => React
 export default RowComponent;
 
 export function defaultRenderRow<R, SR>(key: React.Key, props: RenderRowProps<R, SR>) {
-  return <RowComponent key={key} {...props} />;
+    throw new Error("STUB");
 }

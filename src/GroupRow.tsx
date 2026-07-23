@@ -45,69 +45,7 @@ function GroupedRow<R, SR>({
   toggleGroup,
   ...props
 }: GroupRowRendererProps<R, SR>) {
-  const isPositionOnRow = activeCellIdx === -1;
-
-  let idx = row.level;
-
-  function handleSelectGroup() {
-    setActivePosition({ rowIdx, idx: -1 }, { shouldFocus: true });
-  }
-
-  const selectionValue = useMemo(
-    (): RowSelectionContextValue => ({ isRowSelectionDisabled: false, isRowSelected }),
-    [isRowSelected]
-  );
-
-  return (
-    <RowSelectionContext value={selectionValue}>
-      <div
-        role="row"
-        aria-level={row.level + 1} // aria-level is 1-based
-        aria-setsize={row.setSize}
-        aria-posinset={row.posInSet + 1} // aria-posinset is 1-based
-        aria-expanded={row.isExpanded}
-        tabIndex={isPositionOnRow ? 0 : -1}
-        className={classnames(
-          rowClassname,
-          groupRowClassname,
-          `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
-          isPositionOnRow && rowActiveClassname,
-          className
-        )}
-        onMouseDown={handleSelectGroup}
-        style={{ gridRowStart }}
-        {...props}
-      >
-        {iterateOverViewportColumnsForRow(activeCellIdx)
-          .map(([column, isCellActive], index) => {
-            // Select is always the first column
-            if (index === 0 && column.key === SELECT_COLUMN_KEY) {
-              // eslint-disable-next-line @eslint-react/immutability
-              idx += 1;
-            }
-
-            return (
-              <GroupCell
-                key={column.key}
-                id={row.id}
-                groupKey={row.groupKey}
-                childRows={row.childRows}
-                isExpanded={row.isExpanded}
-                // eslint-disable-next-line @eslint-react/immutability
-                isCellActive={isCellActive}
-                // eslint-disable-next-line @eslint-react/immutability
-                column={column}
-                row={row}
-                groupColumnIndex={idx}
-                toggleGroup={toggleGroup}
-                isGroupByColumn={groupBy.includes(column.key)}
-              />
-            );
-          })
-          .toArray()}
-      </div>
-    </RowSelectionContext>
-  );
+    throw new Error("STUB");
 }
 
 export default memo(GroupedRow) as <R, SR>(

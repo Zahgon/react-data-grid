@@ -17,71 +17,17 @@ const resizeObserver =
   globalThis.ResizeObserver == null ? null : new ResizeObserver(resizeObserverCallback);
 
 function resizeObserverCallback(entries: ResizeObserverEntry[]) {
-  for (const entry of entries) {
-    const target = entry.target as HTMLDivElement;
-
-    if (targetToRefMap.has(target)) {
-      const ref = targetToRefMap.get(target)!;
-      updateSize(ref, entry.contentBoxSize[0]);
-    }
-  }
+    throw new Error("STUB");
 }
 
 function updateSize(ref: RefObject<HTMLDivElement | null>, size: ResizeObserverSize) {
-  if (sizeMap.has(ref)) {
-    const prevSize = sizeMap.get(ref)!;
-    if (prevSize.inlineSize === size.inlineSize && prevSize.blockSize === size.blockSize) {
-      return;
-    }
-  }
-
-  sizeMap.set(ref, size);
-  subscribers.get(ref)?.();
+    throw new Error("STUB");
 }
 
 function getServerSnapshot(): ResizeObserverSize {
-  return initialSize;
+    throw new Error("STUB");
 }
 
 export function useGridDimensions(gridRef: React.RefObject<HTMLDivElement | null>) {
-  const subscribe = useCallback(
-    (onStoreChange: () => void) => {
-      subscribers.set(gridRef, onStoreChange);
-
-      return () => {
-        subscribers.delete(gridRef);
-      };
-    },
-    [gridRef]
-  );
-
-  const getSnapshot = useCallback((): ResizeObserverSize => {
-    // ref.current is null during the initial render, when suspending, or in <Activity mode="hidden">.
-    // We use ref as key instead to access stable values regardless of rendering state.
-    return sizeMap.get(gridRef) ?? initialSize;
-  }, [gridRef]);
-
-  // We use `useSyncExternalStore` instead of `useState` to avoid tearing,
-  // which can lead to flashing scrollbars.
-  const { inlineSize, blockSize } = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  useLayoutEffect(() => {
-    const target = gridRef.current!;
-
-    targetToRefMap.set(target, gridRef);
-    resizeObserver?.observe(target);
-
-    if (!sizeMap.has(gridRef)) {
-      updateSize(gridRef, {
-        inlineSize: target.clientWidth,
-        blockSize: target.clientHeight
-      });
-    }
-
-    return () => {
-      resizeObserver?.unobserve(target);
-    };
-  }, [gridRef]);
-
-  return [inlineSize, blockSize] as const;
+    throw new Error("STUB");
 }

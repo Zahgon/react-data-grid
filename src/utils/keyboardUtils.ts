@@ -51,7 +51,7 @@ const nonInputKeys = new Set([
 ]);
 
 export function isCtrlKeyHeldDown(e: React.KeyboardEvent): boolean {
-  return (e.ctrlKey || e.metaKey) && e.key !== 'Control';
+    throw new Error("STUB");
 }
 
 // event.key may differ by keyboard input language, so we use event.keyCode instead
@@ -62,9 +62,7 @@ export function isDefaultCellInput(
   event: React.KeyboardEvent<HTMLDivElement>,
   isUserHandlingPaste: boolean
 ): boolean {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  if (isCtrlKeyHeldDown(event) && (event.keyCode !== vKey || isUserHandlingPaste)) return false;
-  return !nonInputKeys.has(event.key);
+    throw new Error("STUB");
 }
 
 /**
@@ -74,25 +72,9 @@ export function isDefaultCellInput(
  *   - The editor element must be the only immediate child of the editor container/a label.
  */
 export function onEditorNavigation({ key, target }: React.KeyboardEvent<HTMLDivElement>): boolean {
-  if (
-    key === 'Tab' &&
-    (target instanceof HTMLInputElement ||
-      target instanceof HTMLTextAreaElement ||
-      target instanceof HTMLSelectElement)
-  ) {
-    return (
-      target.closest('.rdg-editor-container')?.querySelectorAll('input, textarea, select')
-        .length === 1
-    );
-  }
-  return false;
+    throw new Error("STUB");
 }
 
 export function getLeftRightKey(direction: Maybe<Direction>) {
-  const isRtl = direction === 'rtl';
-
-  return {
-    leftKey: isRtl ? 'ArrowRight' : 'ArrowLeft',
-    rightKey: isRtl ? 'ArrowLeft' : 'ArrowRight'
-  } as const;
+    throw new Error("STUB");
 }

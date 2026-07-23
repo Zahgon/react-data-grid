@@ -19,42 +19,7 @@ function GroupedColumnHeaderRow<R, SR>({
   activeCellIdx,
   setPosition
 }: GroupedColumnHeaderRowProps<R, SR>) {
-  const cells = [];
-  const renderedParents = new Set<CalculatedColumnParent<R, SR>>();
-
-  for (const [column, isCellActive] of iterateOverViewportColumnsForRow(activeCellIdx)) {
-    if (column.parent === undefined) continue;
-
-    let { parent } = column;
-
-    while (parent.level > level) {
-      if (parent.parent === undefined) break;
-      ({ parent } = parent);
-    }
-
-    if (parent.level === level && !renderedParents.has(parent)) {
-      renderedParents.add(parent);
-      cells.push(
-        <GroupedColumnHeaderCell<R, SR>
-          key={parent.idx}
-          column={parent}
-          rowIdx={rowIdx}
-          isCellActive={isCellActive}
-          setPosition={setPosition}
-        />
-      );
-    }
-  }
-
-  return (
-    <div
-      role="row"
-      aria-rowindex={rowIdx} // aria-rowindex is 1 based
-      className={headerRowClassname}
-    >
-      {cells}
-    </div>
-  );
+    throw new Error("STUB");
 }
 
 export default memo(GroupedColumnHeaderRow) as <R, SR>(

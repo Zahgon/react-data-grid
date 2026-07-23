@@ -1,35 +1,29 @@
 import type { Maybe } from '../types';
 
 export function stopPropagation(event: React.SyntheticEvent) {
-  event.stopPropagation();
+    throw new Error("STUB");
 }
 
 export function scrollIntoView(element: Maybe<Element>, behavior: ScrollBehavior = 'instant') {
-  element?.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior });
+    throw new Error("STUB");
 }
 
 function getRowToScroll(gridEl: HTMLDivElement) {
-  return gridEl.querySelector<HTMLDivElement>('& > [role="row"][tabindex="0"]');
+    throw new Error("STUB");
 }
 
 export function getCellToScroll(gridEl: HTMLDivElement) {
-  return gridEl.querySelector<HTMLDivElement>('& > [role="row"] > [tabindex="0"]');
+    throw new Error("STUB");
 }
 
 function focusElement(element: HTMLDivElement | null, shouldScroll: boolean) {
-  if (element === null) return;
-
-  if (shouldScroll) {
-    scrollIntoView(element);
-  }
-
-  element.focus({ preventScroll: true });
+    throw new Error("STUB");
 }
 
 export function focusRow(gridEl: HTMLDivElement) {
-  focusElement(getRowToScroll(gridEl), true);
+    throw new Error("STUB");
 }
 
 export function focusCell(gridEl: HTMLDivElement, shouldScroll = true) {
-  focusElement(getCellToScroll(gridEl), shouldScroll);
+    throw new Error("STUB");
 }
